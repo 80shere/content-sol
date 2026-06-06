@@ -1,234 +1,151 @@
-# ContentSol - Content + Visual = Results
+# ContentSol - Premium Content & Visual Solutions
 
-A modern, production-ready agency website built with React, Vite, and Tailwind CSS. Features multilingual support (EN/ES), Silo-structured content architecture, and optimized for SEO and conversions.
+A modern, bilingual (EN/ES) website for ContentSol agency built with React, Vite, and Tailwind CSS.
 
-## 🚀 Features
+## Features
 
-- **Multilingual Support**: English and Spanish with language switcher
-- **SEO Optimized**: JSON-LD schema, meta tags, and semantic HTML
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Performance**: Fast loading with Vite and optimized assets
-- **Conversion Focused**: Multiple CTAs and lead capture forms
-- **Silo Structure**: Organized content architecture for better SEO
-- **Modern UI**: Smooth animations with Framer Motion
-- **Dark Theme**: Professional dark design with accent colors
+✅ **Bilingual Support** - English and Spanish with automatic language detection
+✅ **Light Premium Design** - Modern, clean, professional aesthetic
+✅ **Fully Responsive** - Mobile, tablet, and desktop optimized
+✅ **SEO Optimized** - Meta tags, semantic HTML, Open Graph
+✅ **Fast Performance** - Vite + React for optimal speed
+✅ **Smooth Animations** - Framer Motion for engaging interactions
+✅ **Lead Capture** - Contact forms and WhatsApp integration
+✅ **Multiple Pages** - Home, Services, Portfolio, Blog, About, Contact
 
-## 📁 Project Structure
+## Tech Stack
+
+- **Frontend:** React 18 + Vite
+- **Styling:** Tailwind CSS 3
+- **Animations:** Framer Motion
+- **Routing:** React Router v6
+- **State Management:** Zustand
+- **Icons:** Lucide React
+
+## Project Structure
 
 ```
-content-sol/
+content-sol-v2/
 ├── src/
-│   ├── components/
-│   │   ├── Header.jsx
-│   │   └── Footer.jsx
-│   ├── pages/
-│   │   ├── Home.jsx
-│   │   ├── Services.jsx
-│   │   ├── Portfolio.jsx
-│   │   ├── Blog.jsx
-│   │   └── Contact.jsx
-│   ├── i18n/
-│   │   └── translations.js
-│   ├── store/
-│   │   └── languageStore.js
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
+│   ├── components/        # Reusable components (Header, Footer)
+│   ├── pages/            # Page components (Home, Services, etc.)
+│   ├── i18n/             # Translations (EN/ES)
+│   ├── store/            # Zustand stores (language)
+│   ├── styles/           # Global CSS
+│   ├── App.jsx           # Main app with routing
+│   └── main.jsx          # Entry point
 ├── index.html
+├── package.json
 ├── vite.config.js
 ├── tailwind.config.js
-├── postcss.config.js
-└── package.json
+├── vercel.json           # Vercel deployment config
+└── README.md
 ```
 
-## 🛠️ Installation & Setup
+## Getting Started
 
 ### Prerequisites
-- Node.js 16+ and npm/yarn/pnpm
+- Node.js 16+ 
+- npm or pnpm
 
-### Local Development
+### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd content-sol
-   ```
+```bash
+# Clone the repository
+cd content-sol-v2
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   pnpm install
-   ```
+# Install dependencies
+npm install
 
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-   The site will be available at `http://localhost:3000`
+# Start development server
+npm run dev
 
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
+# Build for production
+npm run build
 
-5. **Preview production build**
-   ```bash
-   npm run preview
-   ```
-
-## 🌍 Multilingual Support
-
-The site supports English (EN) and Spanish (ES). Users can switch languages using the language selector in the header. Language preference is saved in localStorage.
-
-To add more languages:
-1. Add translations to `src/i18n/translations.js`
-2. Update language options in `src/components/Header.jsx`
-3. Update `tailwind.config.js` if needed
-
-## 📊 SEO & Content Architecture
-
-### Silo Structure
-
-The site is organized into 4 main content silos:
-
-1. **SEO Copywriting** (`/services#seo`)
-   - Blog posts about SEO writing
-   - Service page with pricing
-   - Case studies
-
-2. **AI Images** (`/services#ai`)
-   - Blog posts about AI image generation
-   - Service page with features
-   - Portfolio examples
-
-3. **Professional Photography** (`/services#photo`)
-   - Blog posts about personal branding
-   - Service page with packages
-   - Portfolio showcase
-
-4. **Copywriting** (`/services#copy`)
-   - Blog posts about persuasive writing
-   - Service page with types
-   - Email templates
-
-### Internal Linking Strategy
-
-- Each service page links to related blog posts
-- Blog posts link back to relevant services
-- Portfolio cases link to multiple services
-- Footer contains navigation to all main sections
-
-## 🎨 Design System
-
-### Colors
-- **Primary**: `#1a1a1a` (Dark background)
-- **Secondary**: `#0066ff` (Blue accent)
-- **Accent**: `#ff6b35` (Orange accent)
-- **Neutral Light**: `#f5f5f5`
-- **Neutral Dark**: `#2a2a2a`
-
-### Typography
-- **Display Font**: Poppins (headings)
-- **Body Font**: Inter (body text)
-
-### Spacing
-- Section padding: `6rem` (section class)
-- Container max-width: `80rem` (7xl)
-
-## 📱 Responsive Breakpoints
-
-- Mobile: 320px - 640px
-- Tablet: 641px - 1024px
-- Desktop: 1025px+
-
-## 🚀 Deployment
-
-### Deploy to Vercel
-
-1. **Push to GitHub**
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push origin main
-   ```
-
-2. **Connect to Vercel**
-   - Go to [vercel.com](https://vercel.com)
-   - Click "New Project"
-   - Select your GitHub repository
-   - Vercel will auto-detect Vite configuration
-   - Click "Deploy"
-
-3. **Custom Domain** (Optional)
-   - In Vercel dashboard, go to Settings → Domains
-   - Add your custom domain
-   - Update DNS records as instructed
-
-### Environment Variables
-
-No environment variables required for basic setup. If you add a backend API, add it to `.env.local`:
-
-```
-VITE_API_URL=https://api.example.com
+# Preview production build
+npm run preview
 ```
 
-## 📈 Performance Optimization
+The app will be available at `http://localhost:5173`
 
-- **Image Optimization**: Use WebP format with fallbacks
-- **Code Splitting**: Vite automatically splits code by route
-- **Lazy Loading**: Images and components load on demand
-- **Caching**: Static assets cached by browser
-- **Minification**: Production builds are minified
+## Deployment to Vercel
 
-## 🔒 Security
+### Option 1: Using Vercel CLI
 
-- No sensitive data in frontend code
-- All forms use HTTPS
-- Content Security Policy ready
-- XSS protection via React's built-in escaping
+```bash
+# Install Vercel CLI
+npm install -g vercel
 
-## 📧 Contact Form
-
-The contact form currently logs to console. To integrate with a backend:
-
-1. Update the `handleSubmit` function in `src/pages/Contact.jsx`
-2. Send form data to your API endpoint
-3. Implement email sending on backend
-
-Example:
-```javascript
-const response = await fetch('/api/contact', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(formData),
-})
+# Deploy
+vercel
 ```
 
-## 🧪 Testing
+### Option 2: Using GitHub + Vercel
 
-To add tests:
+1. Push your code to GitHub:
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/YOUR_USERNAME/content-sol.git
+git branch -M main
+git push -u origin main
+```
 
-1. Install testing libraries
-   ```bash
-   npm install -D vitest @testing-library/react @testing-library/jest-dom
-   ```
+2. Go to [vercel.com](https://vercel.com)
+3. Click "Add New..." → "Project"
+4. Select your GitHub repository
+5. Click "Import" and Vercel will auto-deploy
 
-2. Create test files (e.g., `src/components/Header.test.jsx`)
+## Customization
 
-3. Run tests
-   ```bash
-   npm run test
-   ```
+### Change Colors
+Edit `tailwind.config.js` to modify the color palette:
+```js
+colors: {
+  primary: '#0F172A',      // Deep navy
+  secondary: '#0EA5E9',    // Sky blue
+  accent: '#F59E0B',       // Amber
+  // ... more colors
+}
+```
 
-## 📝 License
+### Update Translations
+Edit `src/i18n/translations.js` to add or modify text in English and Spanish.
 
-This project is proprietary. All rights reserved.
+### Add New Pages
+1. Create a new component in `src/pages/`
+2. Add the route in `src/App.jsx`
+3. Add navigation link in `src/components/Header.jsx`
 
-## 🤝 Support
+## Performance Optimization
 
-For questions or support, contact: peerfield@gmail.com
+- Images are optimized with Vite
+- Code splitting enabled for faster initial load
+- CSS is minified and tree-shaken
+- Lazy loading for routes (optional)
 
----
+## SEO
 
-**Built with ❤️ using React, Vite, and Tailwind CSS**
+- Semantic HTML structure
+- Meta tags in index.html
+- Open Graph tags for social sharing
+- Responsive design for mobile SEO
+- Fast performance for Core Web Vitals
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers
+
+## License
+
+© 2024 ContentSol. All rights reserved.
+
+## Support
+
+For questions or issues, contact: peerfield@gmail.com

@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #FFFFFF;
+  color: #0F172A;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3.5rem;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.875rem;
+}
+
+/* Premium button styles */
+.btn {
+  @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50;
+}
+
+.btn-outline {
+  @apply px-6 py-3 border-2 border-gray-300 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-all;
+}
+
+/* Premium card styles */
+.card {
+  @apply bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300;
+}
+
+.card-hover {
+  @apply hover:border-blue-200 hover:-translate-y-1;
+}
+
+/* Section spacing */
+.section {
+  @apply py-20 md:py-32;
+}
+
+.section-title {
+  @apply text-4xl md:text-5xl font-bold text-center mb-12;
+}
+
+/* Premium gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #0EA5E9 0%, #0F172A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Sticky header */
+.sticky-header {
+  @apply sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100;
+}
+
+/* Container */
+.container {
+  @apply max-w-7xl mx-auto px-4 md:px-8;
+}
+
+/* Smooth transitions */
+.transition-smooth {
+  @apply transition-all duration-300 ease-out;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible {
+  @apply outline-2 outline-offset-2 outline-blue-600;
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
+}

@@ -1,240 +1,347 @@
 export const translations = {
   en: {
+    // Navigation
     nav: {
       home: 'Home',
       services: 'Services',
-      seoWriting: 'SEO Writing',
-      aiImages: 'AI Images',
-      photography: 'Photography',
-      copywriting: 'Copywriting',
-      blog: 'Blog',
       portfolio: 'Portfolio',
+      blog: 'Blog',
+      about: 'About',
       contact: 'Contact',
+      cta: 'Book a Free Strategy Call',
     },
+    
+    // Hero
     hero: {
-      badge: 'Your Content, Amplified',
-      title: 'Content + Visual = Results',
-      subtitle: 'SEO copywriting, AI-generated images, professional photography, and persuasive copy that drives conversions. Everything your brand needs in one place.',
-      cta: 'Start Free Consultation',
-      cta2: 'View Our Work',
+      eyebrow: 'Content, visuals and positioning for brands that want better clients',
+      title: 'SEO copywriting, AI visuals and expert photography that turn attention into revenue',
+      subtitle: 'ContentSol helps experts, founders, consultants and boutique businesses grow with strategic content, conversion-focused copy, AI-generated business visuals and premium photography — delivered globally.',
+      cta1: 'Book a Free Strategy Call',
+      cta2: 'View Case Studies',
+      trust: 'Available worldwide · English-first delivery · Strategy before execution',
     },
+    
+    // Trust bar
+    trust: {
+      item1: 'Bilingual content systems',
+      item2: 'Global remote delivery',
+      item3: 'SEO + visual production in one team',
+      item4: 'Premium positioning for experts',
+      item5: 'AI visuals + real photography when needed',
+    },
+    
+    // Services
     services: {
       title: 'Our Services',
-      subtitle: 'Everything you need to dominate search engines and convert visitors into customers',
-      seoWriting: {
-        title: 'SEO Copywriting',
-        description: 'Strategic content that ranks in Google and converts readers into customers',
-        features: ['Keyword research', 'Content strategy', 'On-page optimization', 'Technical SEO'],
+      seo: {
+        name: 'SEO Copywriting',
+        desc: 'Strategic website and blog content built to rank, attract qualified traffic and convert readers into leads.',
+        bullets: ['Keyword research', 'SEO landing pages', 'Blog content strategy', 'On-page optimization'],
       },
-      aiImages: {
-        title: 'AI-Generated Images',
-        description: 'Professional product images and illustrations created in seconds',
-        features: ['Product photography', 'Illustrations', 'Social media graphics', 'Custom designs'],
+      copy: {
+        name: 'Persuasive Copywriting',
+        desc: 'Sales-focused messaging for landing pages, offers, ads and emails that move prospects to action.',
+        bullets: ['Landing page copy', 'Sales pages', 'Email campaigns', 'Ad and social copy'],
       },
-      photography: {
-        title: 'Professional Photography',
-        description: 'Authentic visual content that builds trust and showcases your expertise',
-        features: ['Personal branding', 'Content shoots', 'LinkedIn portraits', 'Social media content'],
+      ai: {
+        name: 'AI Visuals for Business',
+        desc: 'Fast, polished visual assets for websites, social media, digital products and campaigns.',
+        bullets: ['AI product visuals', 'Social media graphics', 'Brand illustrations', 'Campaign creatives'],
       },
-      copywriting: {
-        title: 'Persuasive Copywriting',
-        description: 'Words that sell: landing pages, emails, and social media content',
-        features: ['Sales pages', 'Email campaigns', 'Social posts', 'Ad copy'],
+      photo: {
+        name: 'Personal Brand Photography',
+        desc: 'Premium photo sessions that help experts, founders and professionals look credible, modern and distinctive.',
+        bullets: ['Personal brand shoots', 'LinkedIn portraits', 'Website photography', 'Content sessions'],
       },
       learnMore: 'Learn More',
     },
+    
+    // Who we work with
+    whoWeWorkWith: {
+      title: 'Who we work with',
+      desc: 'We build content and visuals for service-based brands that need stronger positioning, better trust signals and more qualified leads.',
+      segments: ['Coaches and consultants', 'Founders and personal brands', 'Real estate professionals', 'Clinics and wellness businesses', 'Boutique agencies and premium services'],
+    },
+    
+    // Process
     process: {
-      title: 'How We Work',
-      subtitle: 'A proven 4-step process to transform your content strategy',
+      title: 'Our Process',
       step1: {
         title: 'Strategy',
-        description: 'We analyze your market, competitors, and audience to create a winning content plan',
+        desc: 'We define goals, audience, offer clarity and the right content mix.',
       },
       step2: {
-        title: 'Content Creation',
-        description: 'Our team produces SEO-optimized texts, AI images, and professional photography',
+        title: 'Planning',
+        desc: 'We map pages, keywords, visuals and conversion opportunities.',
       },
       step3: {
-        title: 'Optimization',
-        description: 'Every piece is refined for maximum impact, conversion, and search visibility',
+        title: 'Production',
+        desc: 'We create the copy, SEO assets, AI visuals and photography required.',
       },
       step4: {
-        title: 'Results',
-        description: 'Watch your organic traffic grow, rankings improve, and conversions increase',
+        title: 'Optimization',
+        desc: 'We refine, test and improve the final assets for trust, clarity and conversion.',
       },
     },
-    portfolio: {
-      title: 'Case Studies',
-      subtitle: 'Real results from real clients across different industries',
-      viewCase: 'View Case Study',
+    
+    // Pricing
+    pricing: {
+      title: 'Pricing',
+      note: 'Final pricing depends on scope, language, turnaround and production requirements.',
+      starter: {
+        name: 'Starter',
+        price: '€290',
+        desc: 'For one focused content or visual need',
+      },
+      growth: {
+        name: 'Growth',
+        price: '€690',
+        desc: 'For brands that need coordinated messaging and visuals',
+      },
+      premium: {
+        name: 'Premium',
+        price: '€1,490',
+        desc: 'For full content + visual positioning systems',
+      },
     },
-    testimonials: {
-      title: 'What Our Clients Say',
-      subtitle: 'Trusted by experts, entrepreneurs, and growing businesses',
+    
+    // FAQ
+    faq: {
+      title: 'Frequently Asked Questions',
+      items: [
+        {
+          q: 'Do you work with clients outside Spain?',
+          a: 'Yes. Our English service is available worldwide.',
+        },
+        {
+          q: 'Do you offer services in Spanish and English?',
+          a: 'Yes. We can create and adapt content in both languages.',
+        },
+        {
+          q: 'Are AI visuals enough or do I need real photography?',
+          a: 'It depends on the goal. We recommend AI visuals, photography, or a hybrid approach based on channel and trust needs.',
+        },
+        {
+          q: 'Can you help with website messaging and structure too?',
+          a: 'Yes. We help shape the content, page flow and conversion logic.',
+        },
+        {
+          q: 'Do you work with personal brands?',
+          a: 'Yes. Experts, consultants, founders and premium service providers are a strong fit.',
+        },
+        {
+          q: 'Is the strategy call free?',
+          a: 'Yes. The first strategy call is free.',
+        },
+      ],
     },
-    blog: {
-      title: 'Latest Articles',
-      subtitle: 'Industry insights, tips, and strategies to grow your business',
-      readMore: 'Read More',
-      category: 'Category',
-      published: 'Published',
+    
+    // Lead magnet
+    leadMagnet: {
+      title: 'Get a free content and visibility audit',
+      desc: "We'll review your website, messaging or brand presence and show you the fastest opportunities to improve trust, clarity and conversions.",
+      cta: 'Request my free audit',
     },
-    cta: {
-      title: 'Ready to Transform Your Content?',
-      subtitle: 'Get a free consultation and discover how ContentSol can help you reach your goals',
-      button: 'Schedule Consultation',
-    },
-    footer: {
-      about: 'ContentSol helps experts and businesses create content that converts. From SEO copywriting to professional photography, we deliver results.',
-      services: 'Services',
-      company: 'Company',
-      resources: 'Resources',
-      legal: 'Legal',
-      contact: 'Contact',
-      privacy: 'Privacy Policy',
-      terms: 'Terms of Service',
-      copyright: '© 2025 ContentSol. All rights reserved.',
-    },
+    
+    // Contact
     contact: {
-      title: 'Get In Touch',
-      subtitle: 'Have questions? We\'d love to hear from you. Send us a message and we\'ll respond as soon as possible.',
+      title: 'Let\'s Talk',
+      desc: 'Ready to grow your brand with strategic content and visuals?',
       form: {
-        name: 'Your Name',
-        email: 'Your Email',
-        phone: 'Phone Number',
-        subject: 'Subject',
+        name: 'Name',
+        email: 'Email',
+        website: 'Website or Instagram',
+        need: 'What do you need?',
+        language: 'Preferred language',
+        budget: 'Budget range',
         message: 'Message',
         submit: 'Send Message',
-        sending: 'Sending...',
-        success: 'Message sent successfully!',
-        error: 'Error sending message. Please try again.',
+        response: 'We reply within 1 business day',
       },
-      info: {
-        email: 'Email',
-        phone: 'Phone',
-        address: 'Address',
-      },
+      whatsapp: 'Chat on WhatsApp',
+    },
+    
+    // Footer
+    footer: {
+      tagline: 'Strategic content and visuals for premium brands.',
+      links: 'Links',
+      legal: 'Legal',
+      privacy: 'Privacy Policy',
+      terms: 'Terms of Service',
+      copyright: '© 2024 ContentSol. All rights reserved.',
     },
   },
+  
   es: {
+    // Navigation
     nav: {
       home: 'Inicio',
       services: 'Servicios',
-      seoWriting: 'Copywriting SEO',
-      aiImages: 'Imágenes IA',
-      photography: 'Fotografía',
-      copywriting: 'Copywriting',
-      blog: 'Blog',
       portfolio: 'Portafolio',
+      blog: 'Blog',
+      about: 'Sobre nosotros',
       contact: 'Contacto',
+      cta: 'Reserva una llamada estratégica gratuita',
     },
+    
+    // Hero
     hero: {
-      badge: 'Tu Contenido, Amplificado',
-      title: 'Contenido + Visual = Resultados',
-      subtitle: 'Copywriting SEO, imágenes generadas por IA, fotografía profesional y textos persuasivos que impulsan conversiones. Todo lo que tu marca necesita en un solo lugar.',
-      cta: 'Comenzar Consulta Gratuita',
-      cta2: 'Ver Nuestro Trabajo',
+      eyebrow: 'Contenido, imagen y posicionamiento para marcas que quieren mejores clientes',
+      title: 'Textos SEO, visuales con IA y fotografía de marca personal para vender mejor en España',
+      subtitle: 'ContentSol ayuda a expertos, profesionales, negocios locales y marcas personales a crecer con contenido estratégico, copy que convierte, imágenes con IA y fotografía premium pensada para el mercado español.',
+      cta1: 'Reserva una llamada estratégica gratuita',
+      cta2: 'Ver casos',
+      trust: 'Servicio para España · Enfoque local · Estrategia antes de ejecutar',
     },
+    
+    // Trust bar
+    trust: {
+      item1: 'Contenido y visuales en un solo equipo',
+      item2: 'Servicio enfocado en España',
+      item3: 'SEO + copy + fotografía de marca',
+      item4: 'Posicionamiento premium para expertos',
+      item5: 'IA + fotografía real según objetivo',
+    },
+    
+    // Services
     services: {
       title: 'Nuestros Servicios',
-      subtitle: 'Todo lo que necesitas para dominar los motores de búsqueda y convertir visitantes en clientes',
-      seoWriting: {
-        title: 'Copywriting SEO',
-        description: 'Contenido estratégico que posiciona en Google y convierte lectores en clientes',
-        features: ['Investigación de palabras clave', 'Estrategia de contenido', 'Optimización on-page', 'SEO técnico'],
+      seo: {
+        name: 'Textos SEO',
+        desc: 'Contenido estratégico para web y blog pensado para posicionar, atraer tráfico cualificado y generar contactos.',
+        bullets: ['Investigación de keywords', 'Landings SEO', 'Estrategia de contenidos', 'Optimización on-page'],
       },
-      aiImages: {
-        title: 'Imágenes Generadas por IA',
-        description: 'Imágenes de productos e ilustraciones profesionales creadas en segundos',
-        features: ['Fotografía de productos', 'Ilustraciones', 'Gráficos para redes sociales', 'Diseños personalizados'],
+      copy: {
+        name: 'Copywriting persuasivo',
+        desc: 'Mensajes orientados a ventas para páginas, ofertas, anuncios y emails que convierten visitas en oportunidades.',
+        bullets: ['Copy para landings', 'Páginas de venta', 'Secuencias de email', 'Anuncios y redes sociales'],
       },
-      photography: {
-        title: 'Fotografía Profesional',
-        description: 'Contenido visual auténtico que genera confianza y muestra tu experiencia',
-        features: ['Marca personal', 'Sesiones de contenido', 'Retratos LinkedIn', 'Contenido para redes sociales'],
+      ai: {
+        name: 'Visuales con IA para negocios',
+        desc: 'Recursos visuales rápidos y profesionales para webs, redes sociales, productos digitales y campañas.',
+        bullets: ['Imágenes de producto con IA', 'Creatividades para redes', 'Ilustraciones de marca', 'Visuales para campañas'],
       },
-      copywriting: {
-        title: 'Copywriting Persuasivo',
-        description: 'Palabras que venden: landing pages, emails y contenido para redes sociales',
-        features: ['Páginas de ventas', 'Campañas de email', 'Posts en redes', 'Textos publicitarios'],
+      photo: {
+        name: 'Fotografía de marca personal',
+        desc: 'Sesiones premium para expertos, profesionales y marcas personales que necesitan una imagen sólida y actual.',
+        bullets: ['Sesiones de marca personal', 'Retratos para LinkedIn', 'Fotografía para web', 'Sesiones de contenido'],
       },
-      learnMore: 'Más Información',
+      learnMore: 'Más información',
     },
+    
+    // Who we work with
+    whoWeWorkWith: {
+      title: 'Con quién trabajamos',
+      desc: 'Creamos contenido y visuales para negocios de servicios que necesitan mejor posicionamiento, más confianza y leads de mayor calidad.',
+      segments: ['Coaches y consultores', 'Fundadores y marcas personales', 'Profesionales inmobiliarios', 'Clínicas y negocios de bienestar', 'Agencias boutique y servicios premium'],
+    },
+    
+    // Process
     process: {
-      title: 'Cómo Trabajamos',
-      subtitle: 'Un proceso probado de 4 pasos para transformar tu estrategia de contenido',
+      title: 'Nuestro Proceso',
       step1: {
         title: 'Estrategia',
-        description: 'Analizamos tu mercado, competencia y audiencia para crear un plan de contenido ganador',
+        desc: 'Definimos objetivos, público, propuesta de valor y la combinación correcta de contenido.',
       },
       step2: {
-        title: 'Creación de Contenido',
-        description: 'Nuestro equipo produce textos optimizados para SEO, imágenes IA y fotografía profesional',
+        title: 'Planificación',
+        desc: 'Organizamos páginas, keywords, visuales y oportunidades de conversión.',
       },
       step3: {
-        title: 'Optimización',
-        description: 'Cada pieza se refina para máximo impacto, conversión y visibilidad en búsqueda',
+        title: 'Producción',
+        desc: 'Creamos los textos, activos SEO, visuales con IA y fotografía necesarios.',
       },
       step4: {
-        title: 'Resultados',
-        description: 'Observa cómo crece tu tráfico orgánico, mejoran los rankings y aumentan las conversiones',
+        title: 'Optimización',
+        desc: 'Refinamos y mejoramos cada pieza para aumentar claridad, confianza y conversión.',
       },
     },
-    portfolio: {
-      title: 'Casos de Estudio',
-      subtitle: 'Resultados reales de clientes reales en diferentes industrias',
-      viewCase: 'Ver Caso de Estudio',
+    
+    // Pricing
+    pricing: {
+      title: 'Precios',
+      note: 'El precio final depende del alcance, idioma, tiempos y necesidades de producción.',
+      starter: {
+        name: 'Inicial',
+        price: '€290',
+        desc: 'Para una necesidad concreta de contenido o visual',
+      },
+      growth: {
+        name: 'Crecimiento',
+        price: '€690',
+        desc: 'Para marcas que necesitan mensajes y visuales coordinados',
+      },
+      premium: {
+        name: 'Premium',
+        price: '€1.490',
+        desc: 'Para sistemas completos de contenido y posicionamiento visual',
+      },
     },
-    testimonials: {
-      title: 'Lo Que Dicen Nuestros Clientes',
-      subtitle: 'Confiado por expertos, emprendedores y negocios en crecimiento',
+    
+    // FAQ
+    faq: {
+      title: 'Preguntas Frecuentes',
+      items: [
+        {
+          q: '¿Trabajáis solo en España?',
+          a: 'La versión en español está enfocada al mercado español. La versión en inglés se ofrece a nivel global.',
+        },
+        {
+          q: '¿Ofrecéis servicios en español e inglés?',
+          a: 'Sí. Creamos y adaptamos contenido en ambos idiomas.',
+        },
+        {
+          q: '¿Basta con imágenes con IA o necesito fotografía real?',
+          a: 'Depende del objetivo. Recomendamos IA, fotografía o una solución híbrida según el canal y el nivel de confianza necesario.',
+        },
+        {
+          q: '¿También ayudáis con la estructura y mensajes de la web?',
+          a: 'Sí. Podemos definir contenido, estructura de página y lógica de conversión.',
+        },
+        {
+          q: '¿Trabajáis con marcas personales?',
+          a: 'Sí. Expertos, consultores, fundadores y profesionales son nuestro perfil ideal.',
+        },
+        {
+          q: '¿La llamada estratégica es gratuita?',
+          a: 'Sí. La primera llamada estratégica es gratuita.',
+        },
+      ],
     },
-    blog: {
-      title: 'Últimos Artículos',
-      subtitle: 'Insights de la industria, consejos y estrategias para crecer tu negocio',
-      readMore: 'Leer Más',
-      category: 'Categoría',
-      published: 'Publicado',
+    
+    // Lead magnet
+    leadMagnet: {
+      title: 'Solicita una auditoría gratuita de contenido y visibilidad',
+      desc: 'Revisamos tu web, tus mensajes o tu presencia de marca y te mostramos las oportunidades más rápidas para mejorar confianza, claridad y conversión.',
+      cta: 'Solicitar auditoría gratuita',
     },
-    cta: {
-      title: '¿Listo para Transformar tu Contenido?',
-      subtitle: 'Obtén una consulta gratuita y descubre cómo ContentSol puede ayudarte a alcanzar tus objetivos',
-      button: 'Agendar Consulta',
+    
+    // Contact
+    contact: {
+      title: 'Hablemos',
+      desc: '¿Listo para crecer tu marca con contenido estratégico y visuales?',
+      form: {
+        name: 'Nombre',
+        email: 'Email',
+        website: 'Web o Instagram',
+        need: '¿Qué necesitas?',
+        language: 'Idioma preferido',
+        budget: 'Rango de presupuesto',
+        message: 'Mensaje',
+        submit: 'Enviar mensaje',
+        response: 'Respondemos en 1 día laborable',
+      },
+      whatsapp: 'Chatea en WhatsApp',
     },
+    
+    // Footer
     footer: {
-      about: 'ContentSol ayuda a expertos y negocios a crear contenido que convierte. Desde copywriting SEO hasta fotografía profesional, entregamos resultados.',
-      services: 'Servicios',
-      company: 'Empresa',
-      resources: 'Recursos',
+      tagline: 'Contenido estratégico y visuales para marcas premium.',
+      links: 'Enlaces',
       legal: 'Legal',
-      contact: 'Contacto',
       privacy: 'Política de Privacidad',
       terms: 'Términos de Servicio',
-      copyright: '© 2025 ContentSol. Todos los derechos reservados.',
-    },
-    contact: {
-      title: 'Ponte en Contacto',
-      subtitle: '¿Tienes preguntas? Nos encantaría saber de ti. Envíanos un mensaje y responderemos lo antes posible.',
-      form: {
-        name: 'Tu Nombre',
-        email: 'Tu Email',
-        phone: 'Número de Teléfono',
-        subject: 'Asunto',
-        message: 'Mensaje',
-        submit: 'Enviar Mensaje',
-        sending: 'Enviando...',
-        success: '¡Mensaje enviado exitosamente!',
-        error: 'Error al enviar el mensaje. Por favor intenta de nuevo.',
-      },
-      info: {
-        email: 'Email',
-        phone: 'Teléfono',
-        address: 'Dirección',
-      },
+      copyright: '© 2024 ContentSol. Todos los derechos reservados.',
     },
   },
-}
-
-export const useTranslation = (lang) => {
-  return translations[lang] || translations.en
 }

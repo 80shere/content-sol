@@ -1,212 +1,224 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, TrendingUp } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { ArrowRight } from 'lucide-react'
 import { useLanguageStore } from '../store/languageStore'
-import { useTranslation } from '../i18n/translations'
+import { translations } from '../i18n/translations'
+import { useNavigate } from 'react-router-dom'
 
 export default function Portfolio() {
-  const { language } = useLanguageStore()
-  const t = useTranslation(language)
+  const language = useLanguageStore((state) => state.language)
+  const t = translations[language]
+  const navigate = useNavigate()
 
-  const cases = [
+  const caseStudies = [
     {
       id: 1,
-      title: 'E-commerce Brand Reaches $500K Revenue',
-      category: 'E-commerce',
-      image: '🛍️',
-      description: 'Increased product page conversions by 156% through SEO copywriting and AI-generated product images.',
-      results: [
-        '+340% organic traffic',
-        '+156% conversion rate',
-        '$500K annual revenue',
-      ],
-      services: ['SEO Copywriting', 'AI Images'],
+      title: language === 'en' ? 'Expert Personal Brand Positioning' : 'Posicionamiento de marca personal de experto',
+      category: language === 'en' ? 'Personal Brand' : 'Marca Personal',
+      challenge: language === 'en' 
+        ? 'Coach with strong expertise but weak online presence'
+        : 'Coach con expertise fuerte pero presencia online débil',
+      solution: language === 'en'
+        ? 'Strategic positioning, SEO content, brand photography'
+        : 'Posicionamiento estratégico, contenido SEO, fotografía de marca',
+      results: language === 'en'
+        ? '+150% website traffic, 40+ qualified leads'
+        : '+150% tráfico web, 40+ leads cualificados',
+      services: ['SEO Copywriting', 'Photography', 'Brand Strategy'],
+      image: '👤',
     },
     {
       id: 2,
-      title: 'Expert Consultant Lands 12 High-Value Clients',
-      category: 'Personal Branding',
-      image: '👨‍💼',
-      description: 'Built personal brand through professional photography and SEO-optimized blog content.',
-      results: [
-        '+8.5K monthly visitors',
-        '12 new clients in 3 months',
-        '3x higher consultation bookings',
-      ],
-      services: ['Professional Photography', 'SEO Copywriting'],
+      title: language === 'en' ? 'Service Business Website Redesign' : 'Rediseño de web de negocio de servicios',
+      category: language === 'en' ? 'Service Business' : 'Negocio de Servicios',
+      challenge: language === 'en'
+        ? 'Generic messaging, poor conversion, no clear positioning'
+        : 'Mensajes genéricos, mala conversión, sin posicionamiento claro',
+      solution: language === 'en'
+        ? 'Premium positioning, conversion-focused copy, AI visuals'
+        : 'Posicionamiento premium, copy orientado a conversión, visuales IA',
+      results: language === 'en'
+        ? '3x conversion rate, 60% more qualified inquiries'
+        : '3x tasa de conversión, 60% más consultas cualificadas',
+      services: ['Persuasive Copywriting', 'AI Visuals', 'Web Strategy'],
+      image: '🎯',
     },
     {
       id: 3,
-      title: 'SaaS Company Doubles Email Subscribers',
-      category: 'SaaS',
-      image: '📊',
-      description: 'Crafted persuasive copy for landing pages and email campaigns that doubled subscriber base.',
-      results: [
-        '+100% email subscribers',
-        '+45% email open rate',
-        '+89% click-through rate',
-      ],
-      services: ['Copywriting', 'Email Campaigns'],
+      title: language === 'en' ? 'Product Launch Visual Campaign' : 'Campaña visual de lanzamiento de producto',
+      category: language === 'en' ? 'Campaign' : 'Campaña',
+      challenge: language === 'en'
+        ? 'Need premium visuals for product launch across channels'
+        : 'Necesidad de visuales premium para lanzamiento de producto',
+      solution: language === 'en'
+        ? 'AI-generated product visuals, social media graphics, campaign creatives'
+        : 'Visuales de producto con IA, gráficos redes sociales, creatividades',
+      results: language === 'en'
+        ? '25% engagement increase, 200+ qualified leads'
+        : '+25% engagement, 200+ leads cualificados',
+      services: ['AI Visuals', 'Campaign Design', 'Social Media'],
+      image: '🚀',
     },
     {
       id: 4,
-      title: 'Local Service Business Dominates Local Search',
-      category: 'Local Business',
-      image: '🏢',
-      description: 'Optimized website content and created service pages that rank in top 3 for local keywords.',
-      results: [
-        'Top 3 ranking for 15 keywords',
-        '+420% local search traffic',
-        '+200% phone inquiries',
-      ],
-      services: ['SEO Copywriting', 'Local SEO'],
+      title: language === 'en' ? 'Real Estate Professional Branding' : 'Branding de profesional inmobiliario',
+      category: language === 'en' ? 'Real Estate' : 'Inmobiliario',
+      challenge: language === 'en'
+        ? 'Need premium brand identity and marketing content'
+        : 'Necesidad de identidad de marca premium y contenido marketing',
+      solution: language === 'en'
+        ? 'Brand photography, SEO content, LinkedIn strategy'
+        : 'Fotografía de marca, contenido SEO, estrategia LinkedIn',
+      results: language === 'en'
+        ? '2x client inquiries, premium positioning established'
+        : '2x consultas de clientes, posicionamiento premium establecido',
+      services: ['Photography', 'SEO Copywriting', 'Brand Strategy'],
+      image: '🏠',
     },
     {
       id: 5,
-      title: 'Content Creator Builds Viral Personal Brand',
-      category: 'Content Creator',
-      image: '🎬',
-      description: 'Created consistent visual brand with AI images and professional photography for social media.',
-      results: [
-        '+50K Instagram followers',
-        '+2.5M monthly impressions',
-        '5 brand partnerships',
-      ],
-      services: ['AI Images', 'Professional Photography'],
+      title: language === 'en' ? 'Wellness Clinic Online Authority' : 'Autoridad online de clínica de bienestar',
+      category: language === 'en' ? 'Wellness' : 'Bienestar',
+      challenge: language === 'en'
+        ? 'Establish trust and attract premium clients'
+        : 'Establecer confianza y atraer clientes premium',
+      solution: language === 'en'
+        ? 'Educational content, testimonials, brand photography'
+        : 'Contenido educativo, testimonios, fotografía de marca',
+      results: language === 'en'
+        ? '+200% organic traffic, premium client base'
+        : '+200% tráfico orgánico, base de clientes premium',
+      services: ['SEO Copywriting', 'Photography', 'Content Strategy'],
+      image: '💚',
     },
     {
       id: 6,
-      title: 'B2B Company Generates 200+ Qualified Leads',
-      category: 'B2B',
-      image: '💼',
-      description: 'Developed comprehensive content strategy with SEO blog posts and persuasive sales pages.',
-      results: [
-        '+200 qualified leads',
-        '+$2.5M pipeline',
-        '+35% sales conversion',
-      ],
-      services: ['SEO Copywriting', 'Copywriting'],
+      title: language === 'en' ? 'Boutique Agency Positioning' : 'Posicionamiento de agencia boutique',
+      category: language === 'en' ? 'Agency' : 'Agencia',
+      challenge: language === 'en'
+        ? 'Stand out in competitive market, attract premium clients'
+        : 'Destacar en mercado competitivo, atraer clientes premium',
+      solution: language === 'en'
+        ? 'Strategic positioning, case studies, thought leadership content'
+        : 'Posicionamiento estratégico, casos de éxito, contenido liderazgo',
+      results: language === 'en'
+        ? '5x inbound leads, premium positioning secured'
+        : '5x leads inbound, posicionamiento premium asegurado',
+      services: ['Copywriting', 'Strategy', 'Content Marketing'],
+      image: '⭐',
     },
   ]
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="section bg-gradient-to-b from-neutral-dark to-primary">
-        <div className="container text-center">
-          <motion.div
+      <section className="section pt-32 pb-20 bg-gradient-to-br from-slate-50 to-white">
+        <div className="container text-center max-w-3xl mx-auto">
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl font-bold text-primary mb-6"
           >
-            <h1 className="mb-6">{t.portfolio.title}</h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">{t.portfolio.subtitle}</p>
-          </motion.div>
+            {language === 'en' ? 'Our Work' : 'Nuestro Trabajo'}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-xl text-text-secondary"
+          >
+            {language === 'en'
+              ? 'Real results from brands we\'ve worked with'
+              : 'Resultados reales de marcas con las que hemos trabajado'}
+          </motion.p>
         </div>
       </section>
 
       {/* Case Studies Grid */}
-      <section className="section">
+      <section className="section bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cases.map((caseStudy, idx) => (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {caseStudies.map((study, i) => (
               <motion.div
-                key={caseStudy.id}
-                className="card border border-gray-700 hover:border-secondary transition-all hover:shadow-xl cursor-pointer group"
+                key={study.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5 }}
+                transition={{ delay: i * 0.1 }}
+                className="card card-hover flex flex-col"
               >
-                {/* Image Placeholder */}
-                <div className="h-40 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-lg mb-4 flex items-center justify-center text-6xl group-hover:scale-110 transition-transform">
-                  {caseStudy.image}
+                <div className="text-6xl mb-4">{study.image}</div>
+                <span className="inline-block bg-blue-100 text-secondary px-3 py-1 rounded-full text-sm font-semibold mb-4 w-fit">
+                  {study.category}
+                </span>
+                <h3 className="text-xl font-bold text-primary mb-3">{study.title}</h3>
+                
+                <div className="space-y-3 mb-6 flex-grow">
+                  <div>
+                    <p className="text-sm font-semibold text-text-muted mb-1">
+                      {language === 'en' ? 'Challenge' : 'Desafío'}
+                    </p>
+                    <p className="text-text-secondary text-sm">{study.challenge}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-text-muted mb-1">
+                      {language === 'en' ? 'Solution' : 'Solución'}
+                    </p>
+                    <p className="text-text-secondary text-sm">{study.solution}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-secondary mb-1">
+                      {language === 'en' ? 'Results' : 'Resultados'}
+                    </p>
+                    <p className="text-text-secondary text-sm font-semibold">{study.results}</p>
+                  </div>
                 </div>
 
-                {/* Category Badge */}
-                <div className="badge mb-3">{caseStudy.category}</div>
-
-                {/* Title */}
-                <h3 className="text-lg font-bold mb-2 group-hover:text-secondary transition-colors">
-                  {caseStudy.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-400 text-sm mb-4">{caseStudy.description}</p>
-
-                {/* Results */}
-                <div className="mb-4 space-y-2">
-                  {caseStudy.results.map((result, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm text-gray-300">
-                      <TrendingUp size={16} className="text-secondary" />
-                      {result}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Services */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {caseStudy.services.map((service, i) => (
-                    <span key={i} className="text-xs px-2 py-1 rounded bg-secondary/10 text-secondary">
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {study.services.map((service, j) => (
+                    <span key={j} className="text-xs bg-gray-100 text-text-secondary px-2 py-1 rounded">
                       {service}
                     </span>
                   ))}
                 </div>
 
-                {/* CTA */}
-                <button className="text-secondary hover:text-accent transition-colors font-semibold flex items-center gap-2 group/btn">
-                  {t.portfolio.viewCase}
-                  <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
+                <button className="text-secondary font-semibold hover:text-primary transition-colors flex items-center gap-2">
+                  {language === 'en' ? 'View Case Study' : 'Ver caso'} <ArrowRight size={18} />
                 </button>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="section bg-neutral-dark">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            {[
-              { label: 'Projects Completed', value: '150+' },
-              { label: 'Happy Clients', value: '89%' },
-              { label: 'Avg. Traffic Growth', value: '340%' },
-              { label: 'Avg. ROI', value: '420%' },
-            ].map((stat, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="text-4xl font-bold gradient-text mb-2">{stat.value}</div>
-                <p className="text-gray-400">{stat.label}</p>
-              </motion.div>
-            ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="section">
+      <section className="section bg-gradient-to-r from-secondary to-blue-700 text-white">
         <div className="container text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="max-w-2xl mx-auto"
           >
-            <h2 className="mb-4">Ready to Be Our Next Success Story?</h2>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-              Let's discuss how ContentSol can help you achieve similar results.
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              {language === 'en' ? 'Ready for your success story?' : '¿Listo para tu historia de éxito?'}
+            </h2>
+            <p className="text-xl mb-8 text-blue-100">
+              {language === 'en'
+                ? 'Let\'s discuss how we can help your brand grow'
+                : 'Hablemos sobre cómo podemos ayudar a tu marca a crecer'}
             </p>
-            <Link to="/contact" className="btn btn-primary">
-              Start Your Project
-              <ArrowRight size={20} className="ml-2" />
-            </Link>
+            <button
+              onClick={() => navigate('/contact')}
+              className="bg-white text-secondary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+            >
+              {language === 'en' ? 'Start Your Project' : 'Inicia tu proyecto'} <ArrowRight size={20} />
+            </button>
           </motion.div>
         </div>
       </section>

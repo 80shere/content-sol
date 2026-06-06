@@ -1,281 +1,236 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react'
 import { useLanguageStore } from '../store/languageStore'
-import { useTranslation } from '../i18n/translations'
+import { translations } from '../i18n/translations'
 
 export default function Contact() {
-  const { language } = useLanguageStore()
-  const t = useTranslation(language)
+  const language = useLanguageStore((state) => state.language)
+  const t = translations[language]
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
-    subject: '',
+    website: '',
+    need: '',
+    language: '',
+    budget: '',
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setLoading(true)
-
-    try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      setSubmitted(true)
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
-      setTimeout(() => setSubmitted(false), 5000)
-    } catch (error) {
-      console.error('Error:', error)
-    } finally {
-      setLoading(false)
-    }
+    // Here you would send the form data to your backend
+    console.log('Form submitted:', formData)
+    setSubmitted(true)
+    setTimeout(() => {
+      setSubmitted(false)
+      setFormData({ name: '', email: '', website: '', need: '', language: '', budget: '', message: '' })
+    }, 3000)
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="section bg-gradient-to-b from-neutral-dark to-primary">
-        <div className="container text-center">
-          <motion.div
+      <section className="section pt-32 pb-20 bg-gradient-to-br from-slate-50 to-white">
+        <div className="container text-center max-w-3xl mx-auto">
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl font-bold text-primary mb-6"
           >
-            <h1 className="mb-6">{t.contact.title}</h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">{t.contact.subtitle}</p>
-          </motion.div>
+            {t.contact.title}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-xl text-text-secondary"
+          >
+            {t.contact.desc}
+          </motion.p>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="section">
+      {/* Contact Form & Info */}
+      <section className="section bg-white">
         <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Info */}
             <motion.div
-              className="space-y-8"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="space-y-8"
             >
-              {/* Email */}
-              <div className="card border border-gray-700">
-                <div className="w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center mb-4">
-                  <Mail size={24} className="text-secondary" />
-                </div>
-                <h3 className="font-semibold text-white mb-2">{t.contact.info.email}</h3>
-                <a href="mailto:peerfield@gmail.com" className="text-gray-400 hover:text-secondary transition-colors">
-                  peerfield@gmail.com
-                </a>
-              </div>
+              <div>
+                <h3 className="text-2xl font-bold text-primary mb-6">Get in Touch</h3>
+                <div className="space-y-6">
+                  <div className="flex gap-4">
+                    <Mail className="text-secondary flex-shrink-0 mt-1" size={24} />
+                    <div>
+                      <p className="font-semibold text-primary mb-1">Email</p>
+                      <a href="mailto:peerfield@gmail.com" className="text-text-secondary hover:text-secondary transition-colors">
+                        peerfield@gmail.com
+                      </a>
+                    </div>
+                  </div>
 
-              {/* Phone */}
-              <div className="card border border-gray-700">
-                <div className="w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center mb-4">
-                  <Phone size={24} className="text-secondary" />
-                </div>
-                <h3 className="font-semibold text-white mb-2">{t.contact.info.phone}</h3>
-                <p className="text-gray-400">Available for calls Mon-Fri, 9AM-6PM EST</p>
-              </div>
+                  <div className="flex gap-4">
+                    <MessageCircle className="text-secondary flex-shrink-0 mt-1" size={24} />
+                    <div>
+                      <p className="font-semibold text-primary mb-1">WhatsApp</p>
+                      <a href="https://wa.me/34" className="text-text-secondary hover:text-secondary transition-colors">
+                        Chat on WhatsApp
+                      </a>
+                    </div>
+                  </div>
 
-              {/* Location */}
-              <div className="card border border-gray-700">
-                <div className="w-12 h-12 rounded-lg bg-secondary/20 flex items-center justify-center mb-4">
-                  <MapPin size={24} className="text-secondary" />
+                  <div className="flex gap-4">
+                    <MapPin className="text-secondary flex-shrink-0 mt-1" size={24} />
+                    <div>
+                      <p className="font-semibold text-primary mb-1">Location</p>
+                      <p className="text-text-secondary">
+                        {language === 'en' ? 'Available worldwide' : 'Disponible en todo el mundo'}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-white mb-2">{t.contact.info.address}</h3>
-                <p className="text-gray-400">Available worldwide • Remote-first team</p>
               </div>
 
               {/* Response Time */}
-              <div className="card border border-secondary bg-secondary/5">
-                <div className="flex items-center gap-2 mb-2">
-                  <CheckCircle size={20} className="text-secondary" />
-                  <h3 className="font-semibold text-white">Quick Response</h3>
-                </div>
-                <p className="text-gray-400 text-sm">
-                  We typically respond to inquiries within 24 hours.
+              <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                <p className="text-sm text-text-secondary">
+                  <span className="font-semibold text-primary">{language === 'en' ? 'Response Time:' : 'Tiempo de respuesta:'}</span> {t.contact.form.response}
                 </p>
               </div>
             </motion.div>
 
             {/* Contact Form */}
-            <motion.div
-              className="lg:col-span-2"
+            <motion.form
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              onSubmit={handleSubmit}
+              className="lg:col-span-2 space-y-6"
             >
-              <div className="card border border-gray-700">
-                {submitted ? (
-                  <div className="text-center py-12">
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <CheckCircle size={64} className="text-secondary mx-auto mb-4" />
-                    </motion.div>
-                    <h3 className="text-2xl font-bold mb-2">{t.contact.form.success}</h3>
-                    <p className="text-gray-400">
-                      Thank you for reaching out! We'll get back to you soon.
-                    </p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Name */}
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-white">
-                        {t.contact.form.name}
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="input-field"
-                        required
-                      />
-                    </div>
-
-                    {/* Email */}
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-white">
-                        {t.contact.form.email}
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="input-field"
-                        required
-                      />
-                    </div>
-
-                    {/* Phone */}
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-white">
-                        {t.contact.form.phone}
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="input-field"
-                      />
-                    </div>
-
-                    {/* Subject */}
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-white">
-                        {t.contact.form.subject}
-                      </label>
-                      <select
-                        name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
-                        className="input-field"
-                        required
-                      >
-                        <option value="">Select a service...</option>
-                        <option value="seo">SEO Copywriting</option>
-                        <option value="ai">AI Images</option>
-                        <option value="photo">Professional Photography</option>
-                        <option value="copy">Copywriting</option>
-                        <option value="package">Custom Package</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-
-                    {/* Message */}
-                    <div>
-                      <label className="block text-sm font-semibold mb-2 text-white">
-                        {t.contact.form.message}
-                      </label>
-                      <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        className="textarea-field h-32"
-                        required
-                      />
-                    </div>
-
-                    {/* Submit Button */}
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="btn btn-primary w-full justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                      {loading ? t.contact.form.sending : t.contact.form.submit}
-                      {!loading && <Send size={20} className="ml-2" />}
-                    </button>
-
-                    {/* Privacy Notice */}
-                    <p className="text-xs text-gray-500 text-center">
-                      We respect your privacy. Your information will never be shared.
-                    </p>
-                  </form>
-                )}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder={t.contact.form.name}
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-secondary transition-colors"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder={t.contact.form.email}
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-secondary transition-colors"
+                />
               </div>
-            </motion.div>
+
+              <input
+                type="text"
+                name="website"
+                placeholder={t.contact.form.website}
+                value={formData.website}
+                onChange={handleChange}
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-secondary transition-colors"
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <select
+                  name="need"
+                  value={formData.need}
+                  onChange={handleChange}
+                  className="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-secondary transition-colors"
+                >
+                  <option value="">{t.contact.form.need}</option>
+                  <option value="seo">SEO Copywriting</option>
+                  <option value="copy">Persuasive Copywriting</option>
+                  <option value="ai">AI Visuals</option>
+                  <option value="photo">Photography</option>
+                  <option value="multiple">Multiple Services</option>
+                </select>
+
+                <select
+                  name="budget"
+                  value={formData.budget}
+                  onChange={handleChange}
+                  className="px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-secondary transition-colors"
+                >
+                  <option value="">{t.contact.form.budget}</option>
+                  <option value="under500">Under €500</option>
+                  <option value="500-1000">€500 - €1,000</option>
+                  <option value="1000-2500">€1,000 - €2,500</option>
+                  <option value="2500plus">€2,500+</option>
+                </select>
+              </div>
+
+              <textarea
+                name="message"
+                placeholder={t.contact.form.message}
+                value={formData.message}
+                onChange={handleChange}
+                rows="6"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-secondary transition-colors resize-none"
+              />
+
+              <button
+                type="submit"
+                className="btn btn-primary w-full text-lg flex items-center justify-center gap-2"
+              >
+                <Send size={20} />
+                {t.contact.form.submit}
+              </button>
+
+              {submitted && (
+                <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-lg">
+                  {language === 'en' ? 'Message sent successfully! We\'ll be in touch soon.' : '¡Mensaje enviado! Nos pondremos en contacto pronto.'}
+                </div>
+              )}
+            </motion.form>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="section bg-neutral-dark">
-        <div className="container max-w-3xl">
-          <div className="section-header">
-            <h2>Frequently Asked Questions</h2>
-          </div>
-
-          <div className="space-y-4">
-            {[
-              {
-                q: 'How do I get started?',
-                a: 'Fill out the contact form above or email us directly. We\'ll schedule a free consultation to discuss your needs.',
-              },
-              {
-                q: 'What\'s your typical turnaround time?',
-                a: 'Most projects take 2-4 weeks depending on scope. We offer rush options for urgent projects.',
-              },
-              {
-                q: 'Do you work with international clients?',
-                a: 'Yes! We work with clients worldwide. Our team is remote-first and available 24/7.',
-              },
-              {
-                q: 'What payment methods do you accept?',
-                a: 'We accept all major credit cards, bank transfers, and PayPal. We can also discuss custom payment plans.',
-              },
-            ].map((faq, idx) => (
-              <motion.div
-                key={idx}
-                className="card border border-gray-700"
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.05 }}
-                viewport={{ once: true }}
-              >
-                <h4 className="font-semibold text-white mb-2">{faq.q}</h4>
-                <p className="text-gray-400">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
+      {/* WhatsApp CTA */}
+      <section className="section bg-gradient-to-r from-secondary to-blue-700 text-white">
+        <div className="container text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-2xl mx-auto"
+          >
+            <h2 className="text-4xl font-bold mb-6">
+              {language === 'en' ? 'Prefer to chat?' : '¿Prefieres chatear?'}
+            </h2>
+            <p className="text-xl mb-8 text-blue-100">
+              {language === 'en'
+                ? 'Get a quick response on WhatsApp'
+                : 'Obtén una respuesta rápida en WhatsApp'}
+            </p>
+            <a
+              href="https://wa.me/34"
+              className="bg-white text-secondary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+            >
+              <MessageCircle size={20} />
+              {t.contact.whatsapp}
+            </a>
+          </motion.div>
         </div>
       </section>
     </div>

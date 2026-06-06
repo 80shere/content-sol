@@ -7,18 +7,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#1a1a1a',
-        secondary: '#0066ff',
-        accent: '#ff6b35',
-        'neutral-light': '#f5f5f5',
-        'neutral-dark': '#2a2a2a',
+        // Light premium palette
+        primary: '#0F172A',      // Deep navy
+        secondary: '#0EA5E9',    // Sky blue
+        accent: '#F59E0B',       // Amber
+        light: '#F8FAFC',        // Off white
+        border: '#E2E8F0',       // Light gray
+        text: {
+          primary: '#0F172A',
+          secondary: '#475569',
+          muted: '#94A3B8',
+        }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Poppins', 'system-ui', 'sans-serif'],
+        display: ['Sora', 'system-ui', 'sans-serif'],
       },
       spacing: {
-        'section': '6rem',
+        '128': '32rem',
+        '144': '36rem',
+      },
+      borderRadius: {
+        '3xl': '1.5rem',
       },
     },
   },

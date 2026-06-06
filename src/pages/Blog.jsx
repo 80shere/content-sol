@@ -1,220 +1,220 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Calendar, User } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import { useLanguageStore } from '../store/languageStore'
-import { useTranslation } from '../i18n/translations'
+import { useNavigate } from 'react-router-dom'
 
 export default function Blog() {
-  const { language } = useLanguageStore()
-  const t = useTranslation(language)
+  const language = useLanguageStore((state) => state.language)
+  const navigate = useNavigate()
 
-  const articles = [
+  const articles = language === 'en' ? [
     {
       id: 1,
-      title: 'How to Write SEO Articles That Rank in Google Top 3',
-      category: 'SEO Copywriting',
-      excerpt: 'Learn the proven formula for writing SEO articles that rank fast and convert readers into customers.',
-      author: 'ContentSol Team',
-      date: '2025-01-15',
+      title: 'SEO Copywriting for Consultants: The Complete Guide',
+      excerpt: 'Learn how to write content that ranks AND converts. A step-by-step approach to building authority through strategic SEO.',
+      category: 'SEO',
+      author: 'ContentSol',
+      date: 'March 15, 2024',
       readTime: '8 min read',
-      image: '📝',
     },
     {
       id: 2,
-      title: 'AI Image Generation for E-commerce: Complete Guide',
-      category: 'AI Technology',
-      excerpt: 'Discover how to use AI to generate product images that increase conversions by 156%.',
-      author: 'ContentSol Team',
-      date: '2025-01-12',
+      title: 'AI Visuals vs Real Photography: When to Use Each',
+      excerpt: 'Understanding the strengths and limitations of AI-generated visuals and real photography for your brand.',
+      category: 'Visuals',
+      author: 'ContentSol',
+      date: 'March 12, 2024',
       readTime: '6 min read',
-      image: '🎨',
     },
     {
       id: 3,
-      title: 'Professional Photography for Personal Branding',
+      title: 'Personal Brand Photography: Why Experts Need It',
+      excerpt: 'How premium photography elevates your credibility and attracts better clients. Real examples and ROI data.',
       category: 'Photography',
-      excerpt: 'Why professional photos matter and how they help experts attract high-value clients.',
-      author: 'ContentSol Team',
-      date: '2025-01-10',
+      author: 'ContentSol',
+      date: 'March 8, 2024',
       readTime: '7 min read',
-      image: '📸',
     },
     {
       id: 4,
-      title: 'The Psychology of Persuasive Copywriting',
+      title: 'Website Messaging for Founders: The Framework',
+      excerpt: 'The exact messaging framework we use to help founders communicate their value and attract ideal clients.',
       category: 'Copywriting',
-      excerpt: 'Master the psychological principles that make people take action and buy your products.',
-      author: 'ContentSol Team',
-      date: '2025-01-08',
+      author: 'ContentSol',
+      date: 'March 1, 2024',
       readTime: '9 min read',
-      image: '✍️',
     },
     {
       id: 5,
-      title: 'Semantic Keyword Research for Better Rankings',
-      category: 'SEO Copywriting',
-      excerpt: 'Advanced keyword research techniques that help you target the right audience and rank faster.',
-      author: 'ContentSol Team',
-      date: '2025-01-05',
+      title: 'Bilingual Content Strategy for International Brands',
+      excerpt: 'How to create content in multiple languages without losing brand voice or SEO effectiveness.',
+      category: 'Strategy',
+      author: 'ContentSol',
+      date: 'February 25, 2024',
       readTime: '10 min read',
-      image: '🔍',
     },
     {
       id: 6,
-      title: 'Email Marketing Copy That Gets 45% Open Rates',
-      category: 'Copywriting',
-      excerpt: 'Proven email templates and copy strategies that increase engagement and sales.',
-      author: 'ContentSol Team',
-      date: '2025-01-02',
+      title: 'LinkedIn Positioning for Service Professionals',
+      excerpt: 'The complete guide to building authority on LinkedIn and attracting premium clients through strategic content.',
+      category: 'LinkedIn',
+      author: 'ContentSol',
+      date: 'February 18, 2024',
       readTime: '8 min read',
-      image: '📧',
+    },
+  ] : [
+    {
+      id: 1,
+      title: 'Textos SEO para negocios en España: Guía completa',
+      excerpt: 'Aprende a escribir contenido que posicione y convierta. Estrategia paso a paso para construir autoridad en tu sector.',
+      category: 'SEO',
+      author: 'ContentSol',
+      date: '15 de marzo, 2024',
+      readTime: '8 min lectura',
     },
     {
-      id: 7,
-      title: 'Building Your Personal Brand in 2025',
-      category: 'Personal Branding',
-      excerpt: 'Step-by-step guide to creating a personal brand that attracts clients and opportunities.',
-      author: 'ContentSol Team',
-      date: '2024-12-30',
-      readTime: '12 min read',
-      image: '⭐',
+      id: 2,
+      title: 'Fotografía de marca personal en Málaga y Costa del Sol',
+      excerpt: 'Cómo la fotografía premium eleva tu credibilidad y atrae mejores clientes. Ejemplos reales y datos de ROI.',
+      category: 'Fotografía',
+      author: 'ContentSol',
+      date: '12 de marzo, 2024',
+      readTime: '7 min lectura',
     },
     {
-      id: 8,
-      title: 'Content Strategy Framework for Experts',
-      category: 'Strategy',
-      excerpt: 'The complete framework for creating a content strategy that drives consistent results.',
-      author: 'ContentSol Team',
-      date: '2024-12-28',
-      readTime: '11 min read',
-      image: '📊',
+      id: 3,
+      title: 'Imágenes con IA para negocios en España',
+      excerpt: 'Cuándo usar visuales con IA y cuándo necesitas fotografía real. Análisis completo para tu estrategia visual.',
+      category: 'Visuales',
+      author: 'ContentSol',
+      date: '8 de marzo, 2024',
+      readTime: '6 min lectura',
     },
     {
-      id: 9,
-      title: 'AI Tools for Content Creators: Comparison & Review',
-      category: 'AI Technology',
-      excerpt: 'Complete review of the best AI tools for content creation in 2025.',
-      author: 'ContentSol Team',
-      date: '2024-12-25',
-      readTime: '15 min read',
-      image: '🤖',
+      id: 4,
+      title: 'Copywriting para captar clientes en servicios premium',
+      excerpt: 'El framework exacto que usamos para ayudar a profesionales a comunicar su valor y atraer clientes ideales.',
+      category: 'Copywriting',
+      author: 'ContentSol',
+      date: '1 de marzo, 2024',
+      readTime: '9 min lectura',
+    },
+    {
+      id: 5,
+      title: 'Contenido para marca personal en la Costa del Sol',
+      excerpt: 'Estrategia de posicionamiento local para expertos y profesionales en Málaga, Marbella y alrededores.',
+      category: 'Estrategia',
+      author: 'ContentSol',
+      date: '25 de febrero, 2024',
+      readTime: '8 min lectura',
+    },
+    {
+      id: 6,
+      title: 'LinkedIn para profesionales españoles: Guía de autoridad',
+      excerpt: 'Cómo construir autoridad en LinkedIn y atraer clientes premium a través de contenido estratégico.',
+      category: 'LinkedIn',
+      author: 'ContentSol',
+      date: '18 de febrero, 2024',
+      readTime: '8 min lectura',
     },
   ]
 
-  const categories = ['All', 'SEO Copywriting', 'AI Technology', 'Photography', 'Copywriting', 'Strategy']
-
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="section bg-gradient-to-b from-neutral-dark to-primary">
-        <div className="container text-center">
-          <motion.div
+      <section className="section pt-32 pb-20 bg-gradient-to-br from-slate-50 to-white">
+        <div className="container text-center max-w-3xl mx-auto">
+          <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl font-bold text-primary mb-6"
           >
-            <h1 className="mb-6">{t.blog.title}</h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">{t.blog.subtitle}</p>
+            {language === 'en' ? 'Blog' : 'Blog'}
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-xl text-text-secondary"
+          >
+            {language === 'en'
+              ? 'Insights on content strategy, visuals, and brand positioning'
+              : 'Insights sobre estrategia de contenido, visuales y posicionamiento de marca'}
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Articles Grid */}
+      <section className="section bg-white">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {articles.map((article, i) => (
+              <motion.div
+                key={article.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="card card-hover flex flex-col cursor-pointer"
+              >
+                <span className="inline-block bg-blue-100 text-secondary px-3 py-1 rounded-full text-sm font-semibold mb-4 w-fit">
+                  {article.category}
+                </span>
+                <h3 className="text-xl font-bold text-primary mb-3 flex-grow">{article.title}</h3>
+                <p className="text-text-secondary mb-6">{article.excerpt}</p>
+                
+                <div className="flex items-center gap-4 text-sm text-text-muted mb-6 border-t border-gray-100 pt-6">
+                  <div className="flex items-center gap-1">
+                    <Calendar size={16} />
+                    {article.date}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {article.readTime}
+                  </div>
+                </div>
+
+                <button className="text-secondary font-semibold hover:text-primary transition-colors flex items-center gap-2">
+                  {language === 'en' ? 'Read Article' : 'Leer artículo'} <ArrowRight size={18} />
+                </button>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="section">
-        <div className="container">
-          <div className="flex flex-wrap gap-3 justify-center mb-12">
-            {categories.map((cat, idx) => (
-              <motion.button
-                key={idx}
-                className={`px-6 py-2 rounded-full font-semibold transition-all ${
-                  idx === 0
-                    ? 'bg-secondary text-white'
-                    : 'bg-neutral-dark text-gray-300 hover:bg-secondary hover:text-white'
-                }`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05 }}
-              >
-                {cat}
-              </motion.button>
-            ))}
-          </div>
-
-          {/* Articles Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((article, idx) => (
-              <motion.article
-                key={article.id}
-                className="card border border-gray-700 hover:border-secondary transition-all hover:shadow-xl group cursor-pointer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.05 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-              >
-                {/* Image */}
-                <div className="h-40 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-lg mb-4 flex items-center justify-center text-5xl group-hover:scale-110 transition-transform">
-                  {article.image}
-                </div>
-
-                {/* Category */}
-                <div className="badge mb-3">{article.category}</div>
-
-                {/* Title */}
-                <h3 className="text-lg font-bold mb-3 group-hover:text-secondary transition-colors line-clamp-2">
-                  {article.title}
-                </h3>
-
-                {/* Excerpt */}
-                <p className="text-gray-400 text-sm mb-4 line-clamp-2">{article.excerpt}</p>
-
-                {/* Meta */}
-                <div className="flex items-center gap-4 text-xs text-gray-500 mb-4 pb-4 border-b border-gray-700">
-                  <div className="flex items-center gap-1">
-                    <Calendar size={14} />
-                    {new Date(article.date).toLocaleDateString()}
-                  </div>
-                  <span>{article.readTime}</span>
-                </div>
-
-                {/* Author & CTA */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <User size={14} className="text-secondary" />
-                    <span className="text-xs text-gray-400">{article.author}</span>
-                  </div>
-                  <button className="text-secondary hover:text-accent transition-colors">
-                    <ArrowRight size={18} />
-                  </button>
-                </div>
-              </motion.article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Newsletter CTA */}
-      <section className="section bg-gradient-to-r from-secondary/10 to-accent/10 border-y border-gray-800">
-        <div className="container max-w-2xl text-center">
+      <section className="section bg-slate-50">
+        <div className="container text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="max-w-2xl mx-auto"
           >
-            <h2 className="mb-4">Get Content Tips in Your Inbox</h2>
-            <p className="text-gray-300 mb-6">
-              Subscribe to our newsletter for weekly tips on SEO, copywriting, and content strategy.
+            <h2 className="text-4xl font-bold text-primary mb-6">
+              {language === 'en' ? 'Stay Updated' : 'Mantente actualizado'}
+            </h2>
+            <p className="text-text-secondary mb-8">
+              {language === 'en'
+                ? 'Get insights on content strategy and brand positioning delivered to your inbox'
+                : 'Recibe insights sobre estrategia de contenido y posicionamiento de marca en tu correo'}
             </p>
-            <form className="flex flex-col sm:flex-row gap-3" onSubmit={(e) => e.preventDefault()}>
+            <div className="flex gap-4 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="input-field flex-1"
-                required
+                placeholder={language === 'en' ? 'Your email' : 'Tu email'}
+                className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-secondary"
               />
-              <button className="btn btn-primary">Subscribe</button>
-            </form>
+              <button className="btn btn-primary px-8">
+                {language === 'en' ? 'Subscribe' : 'Suscribirse'}
+              </button>
+            </div>
           </motion.div>
         </div>
       </section>

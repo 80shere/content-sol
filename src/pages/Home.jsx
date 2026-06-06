@@ -1,20 +1,21 @@
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle, Zap, Target, TrendingUp } from 'lucide-react'
+import { ArrowRight, CheckCircle, Star } from 'lucide-react'
 import { useLanguageStore } from '../store/languageStore'
-import { useTranslation } from '../i18n/translations'
+import { translations } from '../i18n/translations'
+import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
-  const { language } = useLanguageStore()
-  const t = useTranslation(language)
+  const language = useLanguageStore((state) => state.language)
+  const t = translations[language]
+  const navigate = useNavigate()
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
       },
     },
   }
@@ -24,187 +25,286 @@ export default function Home() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: 'easeOut' },
+      transition: { duration: 0.8 },
     },
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="section bg-gradient-to-b from-primary via-primary to-neutral-dark">
+      <section className="section pt-32 pb-20 bg-gradient-to-br from-slate-50 to-white">
         <div className="container">
           <motion.div
-            className="max-w-4xl mx-auto text-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <p className="text-secondary font-semibold mb-4 text-lg">{t.hero.eyebrow}</p>
+            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 leading-tight">
+              {t.hero.title}
+            </h1>
+            <p className="text-xl text-text-secondary mb-8 leading-relaxed">
+              {t.hero.subtitle}
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <button
+                onClick={() => navigate('/contact')}
+                className="btn btn-primary text-lg px-8 py-4 flex items-center justify-center gap-2"
+              >
+                {t.hero.cta1} <ArrowRight size={20} />
+              </button>
+              <button
+                onClick={() => navigate('/portfolio')}
+                className="btn btn-outline text-lg px-8 py-4"
+              >
+                {t.hero.cta2}
+              </button>
+            </div>
+
+            {/* Trust Note */}
+            <p className="text-text-muted text-sm">{t.hero.trust}</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Trust Bar */}
+      <section className="bg-white border-y border-gray-100 py-12">
+        <div className="container">
+          <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-5 gap-8"
           >
-            {/* Badge */}
-            <motion.div variants={itemVariants} className="mb-6">
-              <span className="badge">{t.hero.badge}</span>
-            </motion.div>
-
-            {/* Main Heading */}
-            <motion.h1 variants={itemVariants} className="mb-6">
-              {t.hero.title}
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.p variants={itemVariants} className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              {t.hero.subtitle}
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn btn-primary">
-                {t.hero.cta}
-                <ArrowRight size={20} className="ml-2" />
-              </Link>
-              <Link to="/portfolio" className="btn btn-outline">
-                {t.hero.cta2}
-              </Link>
-            </motion.div>
-
-            {/* Hero Image Placeholder */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-12 relative h-96 bg-gradient-to-br from-secondary/20 to-accent/20 rounded-2xl border border-gray-800 overflow-hidden"
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <Zap size={48} className="mx-auto mb-4 text-secondary opacity-50" />
-                  <p className="text-gray-400">Professional Portfolio Showcase</p>
-                </div>
-              </div>
-            </motion.div>
+            {[t.trust.item1, t.trust.item2, t.trust.item3, t.trust.item4, t.trust.item5].map((item, i) => (
+              <motion.div key={i} variants={itemVariants} className="flex items-center gap-3">
+                <CheckCircle className="text-secondary flex-shrink-0" size={24} />
+                <p className="text-text-secondary font-medium">{item}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="section">
+      <section className="section bg-white">
         <div className="container">
-          <div className="section-header">
-            <h2>{t.services.title}</h2>
-            <p>{t.services.subtitle}</p>
-          </div>
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="section-title"
+          >
+            {t.services.title}
+          </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
             {[
-              { id: 'seo', icon: Target, data: t.services.seoWriting },
-              { id: 'ai', icon: Zap, data: t.services.aiImages },
-              { id: 'photo', icon: TrendingUp, data: t.services.photography },
-              { id: 'copy', icon: CheckCircle, data: t.services.copywriting },
-            ].map((service, idx) => (
-              <motion.div
-                key={service.id}
-                className="card-hover"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <service.icon size={40} className="text-secondary mb-4" />
-                <h3 className="text-xl font-bold mb-3">{service.data.title}</h3>
-                <p className="text-gray-400 mb-4">{service.data.description}</p>
+              { name: t.services.seo.name, desc: t.services.seo.desc, bullets: t.services.seo.bullets },
+              { name: t.services.copy.name, desc: t.services.copy.desc, bullets: t.services.copy.bullets },
+              { name: t.services.ai.name, desc: t.services.ai.desc, bullets: t.services.ai.bullets },
+              { name: t.services.photo.name, desc: t.services.photo.desc, bullets: t.services.photo.bullets },
+            ].map((service, i) => (
+              <motion.div key={i} variants={itemVariants} className="card card-hover">
+                <h3 className="text-2xl font-bold text-primary mb-3">{service.name}</h3>
+                <p className="text-text-secondary mb-6">{service.desc}</p>
                 <ul className="space-y-2 mb-6">
-                  {service.data.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-gray-300">
-                      <CheckCircle size={16} className="text-secondary" />
-                      {feature}
+                  {service.bullets.map((bullet, j) => (
+                    <li key={j} className="flex items-center gap-2 text-text-secondary">
+                      <div className="w-2 h-2 bg-secondary rounded-full" />
+                      {bullet}
                     </li>
                   ))}
                 </ul>
-                <Link to={`/services#${service.id}`} className="text-secondary hover:text-accent transition-colors font-semibold">
-                  {t.services.learnMore} →
-                </Link>
+                <button className="text-secondary font-semibold hover:text-primary transition-colors flex items-center gap-2">
+                  {t.services.learnMore} <ArrowRight size={18} />
+                </button>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Who We Work With */}
+      <section className="section bg-slate-50">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">{t.whoWeWorkWith.title}</h2>
+            <p className="text-xl text-text-secondary">{t.whoWeWorkWith.desc}</p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {t.whoWeWorkWith.segments.map((segment, i) => (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                className="bg-white p-6 rounded-xl border border-gray-100 hover:border-secondary transition-all"
+              >
+                <div className="flex items-center gap-3 mb-2">
+                  <Star className="text-secondary" size={20} />
+                  <p className="font-semibold text-primary">{segment}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="section bg-neutral-dark">
+      <section className="section bg-white">
         <div className="container">
-          <div className="section-header">
-            <h2>{t.process.title}</h2>
-            <p>{t.process.subtitle}</p>
-          </div>
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="section-title"
+          >
+            {t.process.title}
+          </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-4 gap-6"
+          >
             {[
-              { step: 1, data: t.process.step1 },
-              { step: 2, data: t.process.step2 },
-              { step: 3, data: t.process.step3 },
-              { step: 4, data: t.process.step4 },
-            ].map((item, idx) => (
-              <motion.div
-                key={item.step}
-                className="relative"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="card">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white font-bold text-lg mb-4">
-                    {item.step}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{item.data.title}</h3>
-                  <p className="text-gray-400">{item.data.description}</p>
+              { title: t.process.step1.title, desc: t.process.step1.desc },
+              { title: t.process.step2.title, desc: t.process.step2.desc },
+              { title: t.process.step3.title, desc: t.process.step3.desc },
+              { title: t.process.step4.title, desc: t.process.step4.desc },
+            ].map((step, i) => (
+              <motion.div key={i} variants={itemVariants} className="relative">
+                <div className="bg-gradient-to-br from-secondary to-blue-700 text-white p-8 rounded-2xl h-full">
+                  <div className="text-4xl font-bold mb-4 opacity-20">{i + 1}</div>
+                  <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
+                  <p className="text-blue-100">{step.desc}</p>
                 </div>
-                {idx < 3 && (
-                  <div className="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2">
-                    <ArrowRight size={24} className="text-secondary opacity-50" />
+                {i < 3 && (
+                  <div className="hidden md:block absolute -right-3 top-1/2 transform -translate-y-1/2 text-secondary">
+                    <ArrowRight size={24} />
                   </div>
                 )}
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="section">
+      {/* Pricing Section */}
+      <section className="section bg-slate-50">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="section-title"
+          >
+            {t.pricing.title}
+          </motion.h2>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
+          >
             {[
-              { label: 'Projects Completed', value: '150+' },
-              { label: 'Happy Clients', value: '89%' },
-              { label: 'Avg. Traffic Growth', value: '340%' },
-            ].map((stat, idx) => (
+              { name: t.pricing.starter.name, price: t.pricing.starter.price, desc: t.pricing.starter.desc },
+              { name: t.pricing.growth.name, price: t.pricing.growth.price, desc: t.pricing.growth.desc, featured: true },
+              { name: t.pricing.premium.name, price: t.pricing.premium.price, desc: t.pricing.premium.desc },
+            ].map((plan, i) => (
               <motion.div
-                key={idx}
-                className="text-center"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: idx * 0.1 }}
-                viewport={{ once: true }}
+                key={i}
+                variants={itemVariants}
+                className={`card ${plan.featured ? 'border-2 border-secondary shadow-lg' : ''}`}
               >
-                <div className="text-5xl font-bold gradient-text mb-2">{stat.value}</div>
-                <p className="text-gray-400">{stat.label}</p>
+                {plan.featured && <div className="text-secondary font-semibold text-sm mb-4">Most Popular</div>}
+                <h3 className="text-2xl font-bold text-primary mb-2">{plan.name}</h3>
+                <p className="text-4xl font-bold text-secondary mb-2">{plan.price}</p>
+                <p className="text-text-secondary mb-6">{plan.desc}</p>
+                <button className={`w-full btn ${plan.featured ? 'btn-primary' : 'btn-outline'}`}>
+                  Get Started
+                </button>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
+          <p className="text-center text-text-muted text-sm">{t.pricing.note}</p>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="section bg-gradient-to-r from-secondary/10 to-accent/10 border-y border-gray-800">
+      {/* FAQ Section */}
+      <section className="section bg-white">
+        <div className="container">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="section-title"
+          >
+            {t.faq.title}
+          </motion.h2>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto space-y-4"
+          >
+            {t.faq.items.map((item, i) => (
+              <motion.details key={i} variants={itemVariants} className="card cursor-pointer group">
+                <summary className="font-semibold text-primary text-lg flex items-center justify-between">
+                  {item.q}
+                  <span className="group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="text-text-secondary mt-4 pt-4 border-t border-gray-100">{item.a}</p>
+              </motion.details>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Lead Magnet */}
+      <section className="section bg-gradient-to-r from-secondary to-blue-700 text-white">
         <div className="container text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="max-w-2xl mx-auto"
           >
-            <h2 className="mb-4">{t.cta.title}</h2>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">{t.cta.subtitle}</p>
-            <Link to="/contact" className="btn btn-primary">
-              {t.cta.button}
-              <ArrowRight size={20} className="ml-2" />
-            </Link>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">{t.leadMagnet.title}</h2>
+            <p className="text-xl mb-8 text-blue-100">{t.leadMagnet.desc}</p>
+            <button
+              onClick={() => navigate('/contact')}
+              className="bg-white text-secondary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors inline-flex items-center gap-2"
+            >
+              {t.leadMagnet.cta} <ArrowRight size={20} />
+            </button>
           </motion.div>
         </div>
       </section>
